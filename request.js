@@ -52,18 +52,18 @@ async function getAss() {
 
             <p>Quantity: ${data.quantity}</p>
             <p>Location: ${data.location}</p>
+            <p>Status: ${data.avail}</p>
              
              
         
 
             <p>Category: ${data.category}</p>
+         
             <div id="kru">
-            <button class="Reque" onclick="Reque('${doc.id}')">
-              Request
-            </button>
-           
-           
-            </div>
+            ${data.avail === "available" ? `
+             <button class="Reque" onclick="Reque('${doc.id}')">
+               Request
+             </button>` : ""}</div>
 
 
         </div>
