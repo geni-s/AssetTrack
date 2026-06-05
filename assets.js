@@ -56,10 +56,16 @@ async function getAss() {
         
 
             <p>Category: ${data.category}</p>
+            <div id="kru">
             <button class="Delete" onclick="Delete('${doc.id}')">
               Delete
             </button>
+            <button class="Edit" onclick="Edit('${doc.id}')">
+              Edit
+            </button>
            
+            </div>
+
 
         </div>
         
@@ -89,6 +95,12 @@ window.Delete = async function(id) {
 
 }
 
+window.Edit = function(id) {
+
+    localStorage.setItem("editId", id);
+    window.location.href = "addassets.html";
+
+}
 
 
 

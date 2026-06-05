@@ -3,7 +3,10 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/fireba
 import {
   getFirestore,
   collection,
-  addDoc
+  updateDoc,
+  addDoc,
+  getDoc,
+  doc
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
   const firebaseConfig = {
@@ -19,7 +22,28 @@ import {
 const app = initializeApp(firebaseConfig);
 
 const db = getFirestore(app);
+const editId = localStorage.getItem("editId");
+
+if(editId){
+
+    const docRef = doc(db,"assets",editId);
+
+    const docSnap = await getDoc(docRef);
+
+    const data = docSnap.data();
+
+    document.getElementById("text1").value = data.asset;
+    document.getElementById("text2").value = data.quantity;
+    document.getElementById("text3").value = data.description;
+    document.getElementById("text4").value = data.location;
+    document.getElementById("category").value = data.category;
+
+    document.getElementById("submit").innerText =
+    "Update Asset";
+
+}
 const submit=document.getElementById("submit");
+
 submit.addEventListener("click", async () => {
 
     const assetname = document.getElementById("text1").value;
@@ -34,7 +58,24 @@ submit.addEventListener("click", async () => {
 }
     try {
 
-        await addDoc(collection(db, "assets"), {
+        if(editId){
+             await updateDoc(
+            doc(db,"assets",editId),
+            {
+                asset: assetname,
+                quantity: quantity,
+                description: description,
+                location: location,
+                category: category
+            }
+        );
+
+        localStorage.removeItem("editId");
+
+        alert("Asset Updated Successfully");
+        }
+        else{
+            await addDoc(collection(db, "assets"), {
             asset: assetname,
             quantity: quantity,
             description: description,
@@ -43,6 +84,8 @@ submit.addEventListener("click", async () => {
         });
 
         alert("assets Added Successfully");
+
+        }
 
         document.getElementById("text1").value = "";
         document.getElementById("text2").value = "";

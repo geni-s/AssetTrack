@@ -8,7 +8,7 @@ body{
 
 }
 
-#ass{
+#assets{
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -41,4 +41,20 @@ body{
 }
 .Delete:hover{
      background-color: #aabdaa;
+}
+.Edit{
+    background-color: #8fbc8f;
+    
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.Edit:hover{
+     background-color: #aabdaa;
+}
+
+#kru{
+    display: flex;
+    gap: 20px;
 }
