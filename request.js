@@ -1,14 +1,18 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-
+import {
+  getAuth
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import {
   getFirestore,
   collection,
   getDocs,
-    getDoc,
+  getDoc,
   addDoc,
   updateDoc,
-   deleteDoc,
-  doc
+  deleteDoc,
+  doc,
+  query,
+  where
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
   const firebaseConfig = {
@@ -25,6 +29,9 @@ import {
 const app = initializeApp(firebaseConfig);
 
 const db = getFirestore(app);
+const auth = getAuth(app);
+const user = auth.currentUser;
+
 
 const ass = document.getElementById("assets");
 let assets = [];
@@ -76,16 +83,31 @@ async function getAss() {
 getAss();
 
 
- window.Reque = async function(id) {
+window.Reque = async function(id) {
+
+   const user = auth.currentUser;
+
+   if(!user){
+      alert("Please login first");
+      return;
+   }
 
    try {
 
-
       const assetRef = doc(db, "assets", id);
-
       const assetSnap = await getDoc(assetRef);
-
       const assetData = assetSnap.data();
+      const usersSnapshot = await getDocs(collection(db, "users"));
+
+let username = "";
+
+usersSnapshot.forEach((userDoc) => {
+   const userData = userDoc.data();
+
+   if(userData.email === user.email){
+      username = userData.name;
+   }
+});
 
       await addDoc(
          collection(db, "requests"),
@@ -95,7 +117,7 @@ getAss();
             category: assetData.category,
             userEmail: user.email,
             userId: user.uid,
-            
+            username: username,
             status: "Pending",
             requestDate: new Date()
          }
@@ -106,13 +128,11 @@ getAss();
    } catch(error) {
 
       console.log(error);
-      alert("Error deleting ");
+      alert("Error");
 
    }
 
 }
-
-
 
 
 
