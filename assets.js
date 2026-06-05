@@ -56,6 +56,7 @@ async function getAss() {
         
 
             <p>Category: ${data.category}</p>
+            <p>Availiblity: ${data.avail}</p>
             <div id="kru">
             <button class="Delete" onclick="Delete('${doc.id}')">
               Delete

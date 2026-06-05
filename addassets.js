@@ -37,6 +37,7 @@ if(editId){
     document.getElementById("text3").value = data.description;
     document.getElementById("text4").value = data.location;
     document.getElementById("category").value = data.category;
+    document.getElementById("avail").value = data.avail;
 
     document.getElementById("submit").innerText =
     "Update Asset";
@@ -52,7 +53,8 @@ submit.addEventListener("click", async () => {
     const description = document.getElementById("text3").value;
     const location = document.getElementById("text4").value;
     const category = document.getElementById("category").value;
-    if(assetname === "" || quantity === "" || description === "" || category === ""|| location === ""){
+    const avail=document.getElementById("avail").value;
+    if(assetname === "" || quantity === "" || description === "" || avail === ""||category === ""|| location === ""){
     alert("Fill all fields");
     return;
 }
@@ -63,6 +65,7 @@ submit.addEventListener("click", async () => {
             doc(db,"assets",editId),
             {
                 asset: assetname,
+                avail: avail,
                 quantity: quantity,
                 description: description,
                 location: location,
@@ -77,6 +80,7 @@ submit.addEventListener("click", async () => {
         else{
             await addDoc(collection(db, "assets"), {
             asset: assetname,
+            avail: avail,
             quantity: quantity,
             description: description,
             location:location,
@@ -91,6 +95,7 @@ submit.addEventListener("click", async () => {
         document.getElementById("text2").value = "";
         document.getElementById("text3").value = "";
         document.getElementById("text4").value = "";
+        document.getElementById("avail").value = "";
         document.getElementById("category").value = "";
 
 

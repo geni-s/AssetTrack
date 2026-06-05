@@ -93,6 +93,9 @@ getAss();
             assetId: id,
             assetName: assetData.asset,
             category: assetData.category,
+            userEmail: user.email,
+            userId: user.uid,
+            
             status: "Pending",
             requestDate: new Date()
          }
