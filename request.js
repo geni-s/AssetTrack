@@ -35,6 +35,12 @@ const user = auth.currentUser;
 
 const ass = document.getElementById("assets");
 let assets = [];
+const assetFilter = localStorage.getItem("asset") || "";
+const categoryFilter = localStorage.getItem("category") || "";
+const availFilter = localStorage.getItem("avail") || "";
+localStorage.removeItem("asset");
+localStorage.removeItem("category");
+localStorage.removeItem("avail");
 async function getAss() {
 
     const querySnapshot = await getDocs(collection(db, "assets"));
@@ -45,6 +51,21 @@ async function getAss() {
     querySnapshot.forEach((doc) => {
 
         const data = doc.data();
+   const matchesAsset =
+    assetFilter === "" ||
+    data.asset.toLowerCase().includes(assetFilter.toLowerCase());
+
+   const matchesCategory =
+    categoryFilter === "" ||
+    data.category === categoryFilter;
+
+   const matchesAvail =
+    availFilter === "" ||
+    data.avail === availFilter;
+
+if (!(matchesAsset && matchesCategory && matchesAvail)) {
+    return;
+}
         assets.push(
           {id:doc.id,
            ... data});

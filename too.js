@@ -19,3 +19,14 @@ app.addEventListener("click", () => {
     
 });
 
+const kll=document.getElementById("kll")
+kll.addEventListener("click", () => {
+    
+         window.location.href = "filter.html";
+   
+
+
+    
+});
+
+
