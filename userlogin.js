@@ -49,7 +49,7 @@ login.addEventListener("click", async () => {
 
         
 
-        window.location.href = "request.html";
+        window.location.href = "too.html";
 
     })
 
