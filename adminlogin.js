@@ -45,7 +45,7 @@ login.addEventListener("click", async () => {
             return;
         }
 
-        window.location.href = "index.html";
+        window.location.href = "admin.html";
 
     }
     catch(error){
