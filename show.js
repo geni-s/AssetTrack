@@ -7,6 +7,10 @@ import {
   addDoc,
   updateDoc,
    deleteDoc,
+ 
+  
+  getDoc,
+  
   doc
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
@@ -37,6 +41,9 @@ requests = [];
     querySnapshot.forEach((doc) => {
 
         const data = doc.data();
+    if(data.status === "Rejected"){
+        return;
+    }
         requests.push(
           {id:doc.id,
            ... data});
@@ -74,9 +81,64 @@ requestcontainer.innerHTML += `
 
 getrequest();
 
+window.Reject = async function(id){
 
+    try{
 
+        await updateDoc(
+            doc(db,"requests",id),
+            {
+                status:"Rejected"
+            }
+        );
 
+        alert("Nhi dene wala saman");
 
+        getrequest();
 
+    }
+    catch(error){
 
+        console.log(error);
+
+    }
+
+}
+
+window.Approve = async function(id){
+
+    try{
+        const requestRef = doc(db, "requests", id);
+        const requestSnap = await getDoc(requestRef);
+        const requestData = requestSnap.data();
+        const assetRef = doc(db, "assets", requestData.assetId);
+        const assetSnap = await getDoc(assetRef);
+        const assetData = assetSnap.data();
+
+        const currentQuantity = assetData.quantity;
+                await updateDoc(assetRef, {
+
+            quantity: currentQuantity - 1
+
+        });
+        await updateDoc(
+            doc(db,"requests",id),
+            {
+                status:"Approved"
+
+            }
+
+        );
+
+        alert("Lala Kya yaad rkhega lele");
+
+        getrequest();
+
+    }
+    catch(error){
+
+        console.log(error);
+
+    }
+
+}
