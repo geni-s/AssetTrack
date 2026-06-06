@@ -41,7 +41,7 @@ requests = [];
     querySnapshot.forEach((doc) => {
 
         const data = doc.data();
-    if(data.status === "Rejected"){
+    if(data.status === "Rejected"||data.status === "Approved"){
         return;
     }
         requests.push(
