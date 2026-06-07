@@ -62,7 +62,7 @@ requestcontainer.innerHTML += `
 
     <p>Category: ${data.category}</p>
 
-    <p>Status: ${data.status}</p>
+    
      <p>Due Date:
     ${data.dueDate
       ? data.dueDate.toDate().toLocaleDateString("en-GB")
