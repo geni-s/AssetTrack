@@ -1,10 +1,15 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-
+import {
+  getFirestore,
+  collection,
+  getDocs
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 import {
   getAuth,
   signInWithEmailAndPassword
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
 
 
   const firebaseConfig = {
@@ -18,6 +23,7 @@ import {
   };
 
 const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 
 const auth = getAuth(app);
@@ -40,10 +46,22 @@ login.addEventListener("click", async () => {
 
         const user = userCredential.user;
 
-        if(user.uid !== "haeUHOYxkKNcTSuGuAkGdR7v4ST2"){
-            alert("Wrong Email or Password");
-            return;
-        }
+const usersSnapshot = await getDocs(collection(db, "users"));
+
+let role = "";
+
+usersSnapshot.forEach((doc) => {
+    const data = doc.data();
+
+    if(data.email === user.email){
+        role = data.role;
+    }
+});
+
+if(role !== "admin"){
+    alert("Not an Admin");
+    return;
+}
 
         window.location.href = "admin.html";
 

@@ -140,7 +140,8 @@ usersSnapshot.forEach((userDoc) => {
             userId: user.uid,
             username: username,
             status: "Pending",
-            requestDate: new Date()
+            requestDate: new Date(),
+            dueDate: null
          }
       );
 

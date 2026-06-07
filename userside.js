@@ -11,7 +11,6 @@ import {
   addDoc,
   updateDoc,
    deleteDoc,
-   getDoc,
   doc
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
@@ -44,7 +43,7 @@ requests = [];
 
         const data = doc.data();
         const user= auth.currentUser;
-        if(data.status!=="Approved"){
+        if(user.uid !== data.userId){
         return;
     }
         requests.push(
@@ -63,14 +62,11 @@ requestcontainer.innerHTML += `
     <p>Category: ${data.category}</p>
 
     <p>Status: ${data.status}</p>
-     <p>Due Date:
+    <p>Due Date:
     ${data.dueDate
       ? data.dueDate.toDate().toLocaleDateString("en-GB")
       : "Not Assigned"}
     </p>
-    <button onclick="Return('${doc.id}')">
-        Return
-    </button>
 
 
 
@@ -87,40 +83,3 @@ if(requestcontainer.innerHTML === ""){
 
 
 getrequest();
-window.Return = async function(id){
-
-    try{
-        const requestRef = doc(db, "requests", id);
-        const requestSnap = await getDoc(requestRef);
-        const requestData = requestSnap.data();
-        const assetRef = doc(db, "assets", requestData.assetId);
-        const assetSnap = await getDoc(assetRef);
-        const assetData = assetSnap.data();
-
-        const currentQuantity = assetData.quantity;
-                await updateDoc(assetRef, {
-
-            quantity: currentQuantity + 1
-
-        });
-        await updateDoc(
-            doc(db,"requests",id),
-            {
-                status:"Returned"
-
-            }
-
-        );
-
-        alert("Lala dhayanbad tumahara");
-
-        getrequest();
-
-    }
-    catch(error){
-
-        console.log(error);
-
-    }
-
-}

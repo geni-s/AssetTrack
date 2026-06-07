@@ -114,6 +114,9 @@ window.Approve = async function(id){
         const assetRef = doc(db, "assets", requestData.assetId);
         const assetSnap = await getDoc(assetRef);
         const assetData = assetSnap.data();
+        const due = new Date();
+
+         due.setDate(due.getDate() + 7);
 
         const currentQuantity = assetData.quantity;
                 await updateDoc(assetRef, {
@@ -124,7 +127,8 @@ window.Approve = async function(id){
         await updateDoc(
             doc(db,"requests",id),
             {
-                status:"Approved"
+                status:"Approved",
+                dueDate: due
 
             }
 

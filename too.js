@@ -28,5 +28,14 @@ kll.addEventListener("click", () => {
 
     
 });
+const chpp=document.getElementById("chpp")
+chpp.addEventListener("click", () => {
+    
+         window.location.href = "userside.html";
+   
+
+
+    
+});
 
 
