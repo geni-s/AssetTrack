@@ -41,7 +41,7 @@ requests = [];
     querySnapshot.forEach((doc) => {
 
         const data = doc.data();
-    if(data.status === "Rejected"||data.status === "Approved"){
+    if(data.status === "Rejected"||data.status === "Approved"||data.status === "Returned"){
         return;
     }
         requests.push(
@@ -77,6 +77,11 @@ requestcontainer.innerHTML += `
 `;
 
     });
+    if(requests.length === 0){
+    requestcontainer.innerHTML = `
+        <h2>No Pending Requests</h2>
+    `;
+}
 }
 
 getrequest();
