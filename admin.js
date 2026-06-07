@@ -45,3 +45,13 @@ cant.addEventListener("click", () => {
 
     
 });
+
+const an= document.getElementById("an");
+an.addEventListener("click", () => {
+    
+         window.location.href = "analytics.html";
+   
+
+
+    
+});
