@@ -183,6 +183,7 @@ h1{
 }
 .card{
     transition:0.3s;
+    background-color:#d7e8fd;
 }
 
 .card:hover{
