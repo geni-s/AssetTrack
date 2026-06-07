@@ -103,7 +103,7 @@ async function loadAnalytics(){
 
     document.getElementById("overdueReturns")
     .innerHTML =
-    `⚠Overdue Returns: ${overdueReturns}`;
+    `Overdue Returns: ${overdueReturns}`;
 
 
     createBarChart();

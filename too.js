@@ -37,5 +37,15 @@ chpp.addEventListener("click", () => {
 
     
 });
+const tpp=document.getElementById("tpp")
+tpp.addEventListener("click", () => {
+    
+         window.location.href = "useranalytics.html";
+   
+
+
+    
+});
+
 
 

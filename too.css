@@ -40,7 +40,7 @@ button{
     top: 0;
 
    background: rgba(8,10,20,0.92);
-
+  
     
 
     
@@ -51,6 +51,8 @@ button{
     padding-top: 30px;
 
     gap: 18px;
+    overflow-y: auto;
+
 }
 
 .sidebar h2{
