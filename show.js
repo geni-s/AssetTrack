@@ -63,11 +63,11 @@ requestcontainer.innerHTML += `
 
     <div id="kru">
 
-        <button onclick="Approve('${doc.id}')">
+        <button class="approve" onclick="Approve('${doc.id}')">
             Approve
         </button>
 
-        <button onclick="Reject('${doc.id}')">
+         <button class="reject" onclick="Reject('${doc.id}')">
             Reject
         </button>
 
