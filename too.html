@@ -14,38 +14,76 @@
 
     <div class="sidebar">
 
-    <h2>Admin</h2>
+    <h2>User</h2>
 
     <button class="sidebtn" id="all">
-        
-        <span>want to make request from all list?</span>
+    <i class="fa-solid fa-box-open"></i>
+      <span>Browse Assets</span>
     </button>
     
     
     <button class="sidebtn" id="kll">
         
-        <span>want to make request from filter list?</span>
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <span>Find Assets</span>
     </button>
 
 
-    <button class="sidebtn" id="app">
-       
-        <span>want to see status?</span>
+    <button class="sidebtn" id="ap">
+<i class="fa-solid fa-clipboard-list"></i>
+<span>Request History</span>
     </button>
 
     <button class="sidebtn" id="chpp">
-       
-        <span>want to see due date?</span>
+<i class="fa-solid fa-calendar-days"></i>
+<span>Due Dates</span>
     </button>
-        <button class="sidebtn" id="tpp">
-       
-        <span>analytics?</span>
-    </button>
-    
+
 
 
 </div>
+
+<div class="tru">
+<div class="cards">
+
+<div class="card" id="myRequests">
+    My Requests: 0
+</div>
+
+<div class="card" id="approved">
+    Approved: 0
+</div>
+
+<div class="card" id="pending">
+    Pending: 0
+</div>
+
+<div class="card" id="returned">
+    Returned: 0
+</div>
+
+
+
+
+</div>
+   
+<div class="charts">
+    <div class="chart">
+        <canvas id="barChart"></canvas>
+    </div>
+
+    <div class="chart">
+        <canvas id="pieChart"></canvas>
+    </div>
+
+</div>
+
+</div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
-    <script src="too.js"></script>
+    <script type="module" src="too.js"></script>
 </body>
 </html>
