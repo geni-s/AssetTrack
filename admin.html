@@ -18,33 +18,70 @@
 
     <button class="sidebtn" id="all">
         
-        <span>All Requests?</span>
+        <span><i class="fa-solid fa-clock"></i> Pending Requests</span>
     </button>
 
-    <button class="sidebtn" id="app">
+    <button class="sidebtn" id="ak">
        
-        <span>All approved products?</span>
+        <span><i class="fa-solid fa-circle-check"></i>Approved Assets</span>
     </button>
 
     <button class="sidebtn" id="want">
         
-        <span>Want to add any product</span>
+        <span><i class="fa-solid fa-plus"></i>Add Asset</span>
     </button>
     <button class="sidebtn" id="cant">
         
-        <span>Want to edit or delete any product</span>
+        <span><i class="fa-solid fa-pen-to-square"></i>Manage Assets</span>
     </button>
     <button class="sidebtn" id="ant">
         
-        <span>add back any return item?</span>
+        <span><i class="fa-solid fa-arrow-rotate-left"></i>Return Assets</span>
     </button>
-        <button class="sidebtn" id="an">
-        
-        <span>analytics page</span>
-    </button>
+
 
 </div>
     
-    <script src="admin.js"></script>
+<div class="tru">
+    <div class="cards">
+
+    <div class="card" id="totalAssets">
+        Total Assets: 0
+    </div>
+
+    <div class="card" id="availableAssets">
+        Available Inventory: 0
+    </div>
+
+    <div class="card" id="activeBookings">
+        Active Bookings: 0
+    </div>
+
+    <div class="card" id="overdueReturns">
+        Overdue Returns: 0
+    </div>
+
+
+
+</div>
+   
+<div class="charts">
+    <div class="chart">
+        <canvas id="barChart"></canvas>
+    </div>
+
+    <div class="chart">
+        <canvas id="pieChart"></canvas>
+    </div>
+
+</div>
+
+</div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script type="module" src="admin.js"></script>
 </body>
 </html>
