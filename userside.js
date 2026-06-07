@@ -41,8 +41,12 @@ requests = [];
 
     querySnapshot.forEach((doc) => {
 
+
         const data = doc.data();
         const user= auth.currentUser;
+     if(data.status!=="Approved"){
+        return;
+    }
         if(user.uid !== data.userId){
         return;
     }
