@@ -65,10 +65,26 @@ register.addEventListener("click", async () => {
            document.getElementById("password").value = "";
            window.location.href = "userlogin.html";
            
-   
-       } catch (error) {
-           console.log(error);
-       }
+   } catch (error) {
+
+    if (error.code === "auth/invalid-email") {
+        alert("Please enter a valid email address.");
+    }
+
+    else if (error.code === "auth/weak-password") {
+        alert("Password must be at least 6 characters long.");
+    }
+
+    else if (error.code === "auth/email-already-in-use") {
+        alert("This email is already registered.");
+    }
+
+    else {
+        alert("Something went wrong.");
+    }
+
+    console.log(error);
+}
 
 });
 
