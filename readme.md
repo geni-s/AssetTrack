@@ -1,4 +1,6 @@
 # Smart Asset Management & Resource Allocation Platform
+## drive link
+🔗 https://drive.google.com/drive/folders/114yKvxGREuN_7e7ipAtN9C2BkH3ClkgZ?usp=sharing
 
 ## Live Demo
 
