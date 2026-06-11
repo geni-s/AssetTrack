@@ -10,8 +10,8 @@ A web-based platform for managing, allocating, and tracking organizational asset
 *open admin and user panel in different browser.
 
 ## admin login
-*id: admin@gmail.com
-*pass: adminhumai
+* id: admin@gmail.com
+* pass: adminhumai
 
 
 
