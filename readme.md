@@ -6,8 +6,8 @@
 
 A web-based platform for managing, allocating, and tracking organizational assets efficiently.
 
-### Disclaimer
-## open admin and user panel in different browser.
+## Disclaimer
+# open admin and user panel in different browser.
 
 ## admin login
 * id: admin@gmail.com
